@@ -6,11 +6,11 @@ const HomeTemplate = () => {
     return (
         <div>
             <Head>
-                <title>Coffe Shop</title>
+                <title>Coffe Connoisseur</title>
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
             <S.Wrapper>
-                <Banner buttonText='Click Here'/>
+                <Banner buttonText='View stores nearby'/>
             </S.Wrapper>
         </div>
     )
