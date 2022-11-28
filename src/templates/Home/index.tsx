@@ -1,10 +1,16 @@
+import Head from 'next/head'
+import Banner from '../../components/Banner'
 import * as S from './styles'
 
 const HomeTemplate = () => {
     return (
         <div>
+            <Head>
+                <title>Coffe Shop</title>
+                <link rel='icon' href='/favicon.ico'/>
+            </Head>
             <S.Wrapper>
-                <h1>TESTE</h1>
+                <Banner buttonText='Click Here'/>
             </S.Wrapper>
         </div>
     )

@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
             background-position: 60%;
             background-repeat: no-repeat;
             background-size: cover;
-            height:100%;
+            height: 100%;
             color: ${theme.colors.purple700};
         }
 
