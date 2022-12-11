@@ -20,6 +20,11 @@ export const Wrapper = styled.button`
             background-color: ${theme.colors.purple500};
         }
 
+        :focus {
+            outline: 1px dotted;
+            outline: 5px auto -webkit-focus-ring-color;
+        }
+
         ${customMedia.greaterThan('sm')`
             padding-top: 1rem /* 16px */;
             padding-bottom: 1rem /* 16px */;

@@ -14,7 +14,7 @@ const Banner = ({
         <S.Wrapper>
             <h1>Coffe <span>Connoisseur</span></h1>
             <p>Discover your local coffe shops!</p>
-            <Button>{buttonText}</Button>
+            <Button onClick={buttonHandler}>{buttonText}</Button>
         </S.Wrapper>
     )
 }
