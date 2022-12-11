@@ -5,7 +5,6 @@ const CoffeeStoreTemplate = () => {
     return (
         <Container>
             <S.Wrapper>
-
             </S.Wrapper>
         </Container>
     )
