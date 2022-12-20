@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import * as S from './styles'
+import Link from 'next/link'
 
 type MyProps = {
     name: string
@@ -9,17 +10,23 @@ type MyProps = {
 
 const Card = ({ name, imgUrl, href }: MyProps) => {
     return (
-        <S.Wrapper href={href}>
-            <a>
-                <h2>{name}</h2>
-                <Image 
-                    width={260}
-                    height={160}
-                    src={imgUrl}
-                    alt=''
-                />
-            </a>
-        </S.Wrapper>
+        <Link href={href}>
+            <S.CardLink>
+                <S.Container>
+                    <S.CardHeaderWrapper>
+                        <S.CardHeaderText>{name}</S.CardHeaderText>
+                    </S.CardHeaderWrapper>
+                    <S.CardImageWrapper>
+                        <S.CardImage 
+                            width={260}
+                            height={160}
+                            src={imgUrl}
+                            alt=''
+                        />
+                    </S.CardImageWrapper>
+                </S.Container>
+            </S.CardLink>
+        </Link>
     )
 }
 
