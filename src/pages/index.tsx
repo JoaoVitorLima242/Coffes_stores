@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 
-import CoffeeStoreData from './coffee-store/[id]'
+import CoffeeStoreData from '../constants/coffeStores.json'
 import HomeTemplate from '../templates/Home'
 import { TCoffeStore } from '../@types/coffeStore'
 
@@ -13,6 +13,7 @@ export default function Home({ coffeeStores }: HomePageProps) {
 }
 
 export const getStaticProps: GetStaticProps = () => {
+  console.log(CoffeeStoreData)
   return {
     props: {
       coffeeStores: CoffeeStoreData

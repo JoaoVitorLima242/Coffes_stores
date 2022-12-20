@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+// Styles
+import * as S from './styles'
+// Components
 import Banner from '../../components/Banner'
 import Container from '../../components/Container'
-import * as S from './styles'
 import Card from '../../components/Card'
+// Types
 import { HomePageProps } from '../../pages'
 
 const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
@@ -25,21 +28,14 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                     />
                 </S.ImageContainer>
                 <S.CardLayout>
-                    <Card 
-                        name='DarkHouse Coffee'
-                        imgUrl='/static/hero-image.png'
-                        href ='/coffee-store/darkhorse-coffee'
-                    />
-                    <Card 
-                        name='DarkHouse Coffee'
-                        imgUrl='/static/hero-image.png'
-                        href ='/coffee-store/darkhorse-coffee'
-                    />
-                    <Card 
-                        name='DarkHouse Coffee'
-                        imgUrl='/static/hero-image.png'
-                        href ='/coffee-store/darkhorse-coffee'
-                    />
+                    {coffeeStores.map(({ id, name, imgUrl }) => (
+                        <Card 
+                            key={id}
+                            name={name}
+                            imgUrl={imgUrl}
+                            href ={`/coffee-store/${id}`}
+                        />
+                    ))}
                 </S.CardLayout>
             </S.Wrapper>
         </Container>
