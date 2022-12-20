@@ -23,11 +23,23 @@ const HomeTemplate = () => {
                         alt='Banner image'
                     />
                 </S.ImageContainer>
-                <Card 
-                    name='DarkHouse Coffee'
-                    imgUrl='/static/hero-image.png'
-                    href ='/coffee-store/darkhorse-coffee'
-                />
+                <S.CardLayout>
+                    <Card 
+                        name='DarkHouse Coffee'
+                        imgUrl='/static/hero-image.png'
+                        href ='/coffee-store/darkhorse-coffee'
+                    />
+                    <Card 
+                        name='DarkHouse Coffee'
+                        imgUrl='/static/hero-image.png'
+                        href ='/coffee-store/darkhorse-coffee'
+                    />
+                    <Card 
+                        name='DarkHouse Coffee'
+                        imgUrl='/static/hero-image.png'
+                        href ='/coffee-store/darkhorse-coffee'
+                    />
+                </S.CardLayout>
             </S.Wrapper>
         </Container>
     )
