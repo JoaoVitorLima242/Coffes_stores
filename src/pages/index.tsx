@@ -1,8 +1,11 @@
 import { GetStaticProps } from 'next'
 
+// Contants
 import CoffeeStoreData from '../constants/coffeStores.json'
-import HomeTemplate from '../templates/Home'
+// Types
 import { TCoffeStore } from '../@types/coffeStore'
+// Page Template
+import HomeTemplate from '../templates/Home'
 
 export type HomePageProps = {
   coffeeStores: TCoffeStore[]
