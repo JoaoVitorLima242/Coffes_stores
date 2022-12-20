@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Banner from '../../components/Banner'
 import Container from '../../components/Container'
 import * as S from './styles'
+import Card from '../../components/Card'
 
 const HomeTemplate = () => {
     return (
@@ -22,6 +23,11 @@ const HomeTemplate = () => {
                         alt='Banner image'
                     />
                 </S.ImageContainer>
+                <Card 
+                    name='DarkHouse Coffee'
+                    imgUrl='/static/hero-image.png'
+                    href ='/coffee-store/darkhorse-coffee'
+                />
             </S.Wrapper>
         </Container>
     )
