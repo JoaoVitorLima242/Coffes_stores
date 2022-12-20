@@ -26,5 +26,4 @@ export const CardLayout = styled.div`
     ${customMedia.greaterThan('lg')`
         grid-template-columns: repeat(3, minmax(0, 1fr));
     `}
-
 `

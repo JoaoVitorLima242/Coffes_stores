@@ -5,8 +5,9 @@ import Banner from '../../components/Banner'
 import Container from '../../components/Container'
 import * as S from './styles'
 import Card from '../../components/Card'
+import { HomePageProps } from '../../pages'
 
-const HomeTemplate = () => {
+const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
     return (
         <Container>
             <Head>
