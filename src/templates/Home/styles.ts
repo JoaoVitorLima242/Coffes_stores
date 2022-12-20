@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { customMedia } from "../../styles/customMedia";
 
 export const Wrapper = styled.main`
@@ -25,4 +25,14 @@ export const CardLayout = styled.div`
     ${customMedia.greaterThan('lg')`
         grid-template-columns: repeat(3, minmax(0, 1fr));
     `}
+`
+
+export const SectionTitle = styled.h2`
+    ${({theme}) => css`
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        padding-bottom: 2rem;
+        margin-top: 2rem;
+        color: ${theme.colors.textWhite}
+    `}  
 `

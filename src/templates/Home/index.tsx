@@ -27,16 +27,21 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                         alt='Banner image'
                     />
                 </S.ImageContainer>
-                <S.CardLayout>
-                    {coffeeStores.map(({ id, name, imgUrl }) => (
-                        <Card 
-                            key={id}
-                            name={name}
-                            imgUrl={imgUrl}
-                            href ={`/coffee-store/${id}`}
-                        />
-                    ))}
-                </S.CardLayout>
+                    {coffeeStores.length > 0 && 
+                        <>
+                            <S.SectionTitle>Toronto stores</S.SectionTitle>
+                            <S.CardLayout>
+                                {coffeeStores.map(({ id, name, imgUrl }) => (
+                                    <Card 
+                                        key={id}
+                                        name={name}
+                                        imgUrl={imgUrl}
+                                        href ={`/coffee-store/${id}`}
+                                    />
+                                ))}
+                            </S.CardLayout>
+                        </>
+                    }
             </S.Wrapper>
         </Container>
     )
