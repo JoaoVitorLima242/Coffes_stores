@@ -36,12 +36,14 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                         <S.NameWrapper>
                             <S.Name>{name}</S.Name>
                         </S.NameWrapper>
-                        <S.ImageUrl
-                            src={imgUrl}
-                            width={600}
-                            height={360}
-                            alt={name}
-                        />
+                        <S.ImageUrlWrapper>
+                            <S.ImageUrl
+                                src={imgUrl}
+                                width={600}
+                                height={360}
+                                alt={name}
+                            />
+                        </S.ImageUrlWrapper>
                     </S.Col1>
                     <S.Col2>
                             <p>{address}</p>
