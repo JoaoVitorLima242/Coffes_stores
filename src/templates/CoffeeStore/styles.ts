@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled, { css } from "styled-components";
+import { GlassContainer } from "../../styles/GlassContainer";
 
 export const Wrapper = styled.main`
     display: grid;
@@ -57,6 +58,26 @@ export const ImageUrl = styled(Image)`
     border-style: none;
 `
 
-export const Col2 = styled.div`
-    
+export const Col2 = styled(GlassContainer)`
+    border-radius: 1rem /* 16px */;
+    padding: 1rem /* 16px */;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem /* 8px */;
+    align-self: center;
+    margin-top: 4rem /* 64px */;
+    color: rgba(55, 59, 100, 1);
+`
+
+export const IconWrapper = styled.div`
+    display: flex;
+    margin-bottom: 1rem /* 16px */;
+`
+
+export const Text = styled.p`
+    padding-left: 0.5rem /* 8px */;
+    font-size: 1.5rem /* 24px */;
+    line-height: 2rem /* 32px */;
+    margin: 0;
+    font-weight: 700;
 `

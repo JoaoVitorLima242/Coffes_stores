@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
+import Image from 'next/image'
 
 import Container from '../../components/Container'
 import { CoffeStorePage } from '../../pages/coffee-store/[id]'
@@ -46,8 +47,18 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                         </S.ImageUrlWrapper>
                     </S.Col1>
                     <S.Col2>
-                            <p>{address}</p>
-                            <p>{neighbourhood}</p>
+                        <S.IconWrapper>
+                            <Image src="/static/icons/places.svg" width="24" height="24" alt=''/>
+                            <S.Text>{address}</S.Text>
+                        </S.IconWrapper>
+                        <S.IconWrapper>
+                            <Image src="/static/icons/nearMe.svg" width="24" height="24" alt=''/>
+                            <S.Text>{neighbourhood}</S.Text>
+                        </S.IconWrapper>
+                        <S.IconWrapper>
+                            <Image src="/static/icons/star.svg" width="24" height="24" alt=''/>
+                            <S.Text>1</S.Text>
+                        </S.IconWrapper>
                     </S.Col2>
                 </S.Wrapper>
             </Container>
