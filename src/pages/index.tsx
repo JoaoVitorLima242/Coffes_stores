@@ -16,7 +16,6 @@ export default function Home({ coffeeStores }: HomePageProps) {
 }
 
 export const getStaticProps: GetStaticProps = () => {
-  console.log(CoffeeStoreData)
   return {
     props: {
       coffeeStores: CoffeeStoreData

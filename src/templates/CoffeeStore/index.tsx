@@ -16,25 +16,40 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
     const {
         address,
         name,
-        neighbourhood
+        neighbourhood,
+        imgUrl
     } = coffeeStore || {}
 
     return (
-        <div>
+        <S.Layout>
             <Head>
                 <title>{name}</title>
             </Head>
             <Container>
-                <Link href='/'>
-                    Back to Home
-                </Link>
                 <S.Wrapper>
-                    <p>{name}</p>
-                    <p>{address}</p>
-                    <p>{neighbourhood}</p>
+                    <S.Col1>
+                        <S.BackToHomeLink>
+                            <Link href='/'>
+                                Back to Home
+                            </Link>
+                        </S.BackToHomeLink>
+                        <S.NameWrapper>
+                            <S.Name>{name}</S.Name>
+                        </S.NameWrapper>
+                        <S.ImageUrl
+                            src={imgUrl}
+                            width={600}
+                            height={360}
+                            alt={name}
+                        />
+                    </S.Col1>
+                    <S.Col2>
+                            <p>{address}</p>
+                            <p>{neighbourhood}</p>
+                    </S.Col2>
                 </S.Wrapper>
             </Container>
-        </div>
+        </S.Layout>
     )
 }
 
