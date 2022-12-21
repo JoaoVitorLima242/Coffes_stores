@@ -1,17 +1,34 @@
 import Image from "next/image";
 import styled, { css } from "styled-components";
 import { GlassContainer } from "../../styles/GlassContainer";
+import { customMedia } from "../../styles/customMedia";
 
 export const Wrapper = styled.main`
     display: grid;
-    padding-top: 1.75rem /* 28px */;
-    padding-bottom: 1.75rem /* 28px */;
-    padding-left: 1.75rem /* 12px */;
+    padding: 1.75rem /* 28px */;
+    
     padding-right: 0.75rem /* 12px */;
+
+    ${customMedia.greaterThan('lg')`
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    `}
+
+    ${customMedia.greaterThan('sm')`
+        width: 100%;
+    `}
 `
 
 export const Layout = styled.div`
     height: 100%;
+
+    ${customMedia.greaterThan('lg')`
+        padding: 0 2.5rem /* 0 40px */;
+        height: 100vh;
+    `}
+
+    ${customMedia.greaterThan('sm')`
+        padding: 0 1rem /* 0 16px */;
+    `}
 `
 
 export const Col1 = styled.div`
@@ -63,10 +80,14 @@ export const Col2 = styled(GlassContainer)`
     padding: 1rem /* 16px */;
     display: flex;
     flex-direction: column;
-    margin-left: 0.5rem /* 8px */;
+    margin-left: 1rem /* 8px */;
     align-self: center;
     margin-top: 4rem /* 64px */;
     color: rgba(55, 59, 100, 1);
+
+    ${customMedia.greaterThan('lg')`
+        width: 75%;;
+    `}
 `
 
 export const IconWrapper = styled.div`

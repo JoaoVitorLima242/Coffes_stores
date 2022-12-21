@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Container from '../../components/Container'
 import { CoffeStorePage } from '../../pages/coffee-store/[id]'
 import * as S from './styles'
+import Button from '../../components/Button'
 
 const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
     const { isFallback } = useRouter()
@@ -27,13 +28,13 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                 <title>{name}</title>
             </Head>
             <Container>
+                    <S.BackToHomeLink>
+                        <Link href='/'>
+                            Back to Home
+                        </Link>
+                    </S.BackToHomeLink>
                 <S.Wrapper>
                     <S.Col1>
-                        <S.BackToHomeLink>
-                            <Link href='/'>
-                                Back to Home
-                            </Link>
-                        </S.BackToHomeLink>
                         <S.NameWrapper>
                             <S.Name>{name}</S.Name>
                         </S.NameWrapper>
@@ -59,6 +60,7 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                             <Image src="/static/icons/star.svg" width="24" height="24" alt=''/>
                             <S.Text>1</S.Text>
                         </S.IconWrapper>
+                        <Button size='small'>Up Vote!</Button>
                     </S.Col2>
                 </S.Wrapper>
             </Container>

@@ -5,14 +5,19 @@ import * as S from './styles'
 type Props = {
     children: ReactNode
     onClick?: MouseEventHandler<HTMLButtonElement>
+    size?: 'medium' | 'small'
 }
 
 const Button = ({
     children,
-    onClick
+    onClick,
+    size = 'medium'
 }: Props) => {
     return (
-        <S.Wrapper onClick={onClick}>
+        <S.Wrapper 
+            onClick={onClick}
+            size={size}
+        >
             {children}
         </S.Wrapper>
     )
