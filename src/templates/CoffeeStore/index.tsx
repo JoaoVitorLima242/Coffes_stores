@@ -1,12 +1,18 @@
+import { useRouter } from 'next/router'
 import Container from '../../components/Container'
 import { CoffeStorePage } from '../../pages/coffee-store/[id]'
 import * as S from './styles'
 
 const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
+    const { isFallback } = useRouter()
     const {
-         address,
-         name
-    } = coffeeStore
+        address,
+        name
+    } = coffeeStore || {}
+    
+    if (isFallback) {
+        return <p>loading ...</p>
+    }
 
     return (
         <Container>
