@@ -36,11 +36,17 @@ export const getStaticProps: GetStaticProps = (ctx) => {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
+
+    const paths = CoffeeStoresData.map(item => {
+        return {
+            params: {
+                id: item.id.toString()
+            }
+        }
+    }) 
+
     return {
-        paths: [
-            { params: { id: '0' }},
-            { params: { id: '1' }}
-        ],
+        paths,
         fallback: true
     }
 }
