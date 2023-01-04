@@ -52,6 +52,6 @@ export type Context = {
 
 export type FoursquareResponse = {
     context: Context
-    results: Result
+    results: Result[]
     message?: string
 } 

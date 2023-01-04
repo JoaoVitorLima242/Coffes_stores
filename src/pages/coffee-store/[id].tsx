@@ -7,6 +7,8 @@ import CoffeeStoreTemplate from "../../templates/CoffeeStore"
 import { TCoffeStore } from "../../@types/coffeStore"
 // Contants
 import CoffeeStoresData from '../../constants/coffeStores.json'
+// Services
+import { getCoffeeStores } from "../../services/places"
 
 interface IParams extends ParsedUrlQuery {
     id: string
@@ -35,12 +37,13 @@ export const getStaticProps: GetStaticProps = (ctx) => {
     }
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+    const coffeeStores = await getCoffeeStores()
 
-    const paths = CoffeeStoresData.map(item => {
+    const paths = coffeeStores.map(item => {
         return {
             params: {
-                id: item.id.toString()
+                id: item.fsq_id
             }
         }
     }) 
