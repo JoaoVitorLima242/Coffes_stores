@@ -25,10 +25,12 @@ const CoffeeStore = ({ coffeeStore }: CoffeStorePage) => {
 
 export default CoffeeStore
 
-export const getStaticProps: GetStaticProps = (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
     const { id }  = ctx.params as IParams
 
-    const coffeeStore = CoffeeStoresData.find(item => item.id === Number(id))
+    const coffeeStores = await getCoffeeStores()
+
+    const coffeeStore = coffeeStores.find(item => item.fsq_id === id)
 
     return {
         props: {

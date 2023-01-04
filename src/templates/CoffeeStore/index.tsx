@@ -8,6 +8,9 @@ import { CoffeStorePage } from '../../pages/coffee-store/[id]'
 import * as S from './styles'
 import Button from '../../components/Button'
 
+const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
+
+
 const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
     const { isFallback } = useRouter()
     
@@ -40,7 +43,7 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                         </S.NameWrapper>
                         <S.ImageUrlWrapper>
                             <S.ImageUrl
-                                src={imgUrl}
+                                src={imgUrl || coffeeStorePlaceholder} 
                                 width={600}
                                 height={360}
                                 alt={name}
