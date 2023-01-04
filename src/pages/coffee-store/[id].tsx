@@ -4,9 +4,7 @@ import { ParsedUrlQuery } from "querystring"
 // Template
 import CoffeeStoreTemplate from "../../templates/CoffeeStore"
 // Type
-import { TCoffeStore } from "../../@types/coffeStore"
-// Contants
-import CoffeeStoresData from '../../constants/coffeStores.json'
+import { Result } from "../../@types/foursquare"
 // Services
 import { getCoffeeStores } from "../../services/places"
 
@@ -16,7 +14,7 @@ interface IParams extends ParsedUrlQuery {
 
 
 export type CoffeStorePage = {
-    coffeeStore: TCoffeStore
+    coffeeStore: Result
 }
 
 const CoffeeStore = ({ coffeeStore }: CoffeStorePage) => {

@@ -4,5 +4,5 @@ export type TCoffeStore = {
     imgUrl: string
     websiteUrl: string
     address: string
-    neighbourhood: string
+    neighbourhood: string[]
 }

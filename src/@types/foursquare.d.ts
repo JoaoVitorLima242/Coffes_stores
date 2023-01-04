@@ -26,6 +26,7 @@ export type Location = {
     locality: string
     postcode: string
     region: string
+    neighborhood?: string[]
 }
 
 export type Result = {
@@ -42,6 +43,7 @@ export type Result = {
     name: string
     related_places: {}
     timezone: string
+    imgUrl?: string
 }
 
 export type Context = {

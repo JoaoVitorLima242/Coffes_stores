@@ -19,9 +19,8 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
     }
     
     const {
-        address,
         name,
-        neighbourhood,
+        location,
         imgUrl
     } = coffeeStore || {}
 
@@ -53,11 +52,7 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
                     <S.Col2>
                         <S.IconWrapper>
                             <Image src="/static/icons/places.svg" width="24" height="24" alt=''/>
-                            <S.Text>{address}</S.Text>
-                        </S.IconWrapper>
-                        <S.IconWrapper>
-                            <Image src="/static/icons/nearMe.svg" width="24" height="24" alt=''/>
-                            <S.Text>{neighbourhood}</S.Text>
+                            <S.Text>{location?.formatted_address}</S.Text>
                         </S.IconWrapper>
                         <S.IconWrapper>
                             <Image src="/static/icons/star.svg" width="24" height="24" alt=''/>
