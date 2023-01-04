@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styled, { css } from "styled-components";
+
 import { GlassContainer } from "../../styles/GlassContainer";
 import { customMedia } from "../../styles/customMedia";
 

@@ -10,6 +10,8 @@ import Card from '../../components/Card'
 // Types
 import { HomePageProps } from '../../pages'
 
+const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
+
 const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
     return (
         <Container>
@@ -31,12 +33,12 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                         <>
                             <S.SectionTitle>Toronto stores</S.SectionTitle>
                             <S.CardLayout>
-                                {coffeeStores.map(({ id, name, imgUrl }) => (
+                                {coffeeStores.map(({ fsq_id, name, imgUrl}) => (
                                     <Card 
-                                        key={id}
+                                        key={fsq_id}
                                         name={name}
-                                        imgUrl={imgUrl}
-                                        href ={`/coffee-store/${id}`}
+                                        imgUrl={imgUrl || coffeeStorePlaceholder}
+                                        href ={`/coffee-store/${fsq_id}`}
                                     />
                                 ))}
                             </S.CardLayout>
