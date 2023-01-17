@@ -1,20 +1,25 @@
+import { MouseEventHandler } from 'react';
+
 import Button from '../Button';
 import * as S from './styles'
 
 type Props = {
     buttonText: string;
+    buttonHandler?: MouseEventHandler<HTMLButtonElement>
+    buttonLoading?: boolean
 }
 
 const Banner = ({
-    buttonText
+    buttonText,
+    buttonHandler,
+    buttonLoading
 }: Props) => {
-    const buttonHandler = () => {}
 
     return (
         <S.Wrapper>
             <h1>Coffe <span>Connoisseur</span></h1>
             <p>Discover your local coffe shops!</p>
-            <Button onClick={buttonHandler}>{buttonText}</Button>
+            <Button onClick={buttonHandler}>{buttonLoading ? '...Loading' : buttonText}</Button>
         </S.Wrapper>
     )
 }

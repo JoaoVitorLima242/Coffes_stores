@@ -27,6 +27,10 @@ export const CardLayout = styled.div`
     `}
 `
 
+export const SectionWrapper = styled.section`
+    margin-top: 5rem;
+`
+
 export const SectionTitle = styled.h2`
     ${({theme}) => css`
         font-size: 2.25rem;

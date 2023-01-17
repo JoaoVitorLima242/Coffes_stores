@@ -9,10 +9,23 @@ import Container from '../../components/Container'
 import Card from '../../components/Card'
 // Types
 import { HomePageProps } from '../../pages'
+// Custom Hooks
+import useTrackLocation from '../../hooks/useTrackLocation'
 
 const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
 
 const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
+    const { 
+        handleTrackLocation, 
+        coords, 
+        locationErrorMsg, 
+        isFindingLocation 
+    } = useTrackLocation()
+
+    const onBannerButtonClick = () => {
+        handleTrackLocation()
+    }
+
     return (
         <Container>
             <Head>
@@ -20,7 +33,12 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                 <link rel='icon' href='/favicon.ico'/>
             </Head>
             <S.Wrapper>
-                <Banner buttonText='View stores nearby'/>
+                <Banner 
+                    buttonText='View stores nearby'
+                    buttonHandler={onBannerButtonClick}
+                    buttonLoading={isFindingLocation}
+                />
+                {locationErrorMsg && <p>Something went wrong: {locationErrorMsg}</p>}
                 <S.ImageContainer>
                     <Image 
                         src='/static/hero-image.png'
@@ -30,7 +48,7 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                     />
                 </S.ImageContainer>
                     {coffeeStores.length > 0 && 
-                        <>
+                        <S.SectionWrapper>
                             <S.SectionTitle>Toronto stores</S.SectionTitle>
                             <S.CardLayout>
                                 {coffeeStores.map(({ fsq_id, name, imgUrl}) => (
@@ -42,7 +60,7 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                                     />
                                 ))}
                             </S.CardLayout>
-                        </>
+                        </S.SectionWrapper>
                     }
             </S.Wrapper>
         </Container>

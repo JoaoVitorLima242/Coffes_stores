@@ -7,6 +7,7 @@ type Coords = {
 
 const useTrackLocation = () => {
     const [locationErrorMsg, setLocationErrorMsg] = useState('')
+    const [isFindingLocation, setIsFindingLocation] = useState(false)
     const [coords, setCoords] = useState<Coords | null>(null)
 
     const success = (position: GeolocationPosition) => {
@@ -17,17 +18,21 @@ const useTrackLocation = () => {
             latitude,
             longitude 
         })
+        setLocationErrorMsg('')
+        setIsFindingLocation(false)
     }
 
     const error = () => {
         setLocationErrorMsg('Unable to retrieve your location')
+        setIsFindingLocation(false)
     }
 
     const handleTrackLocation = () => {
+        setIsFindingLocation(true)
         if(!navigator.geolocation) {
             setLocationErrorMsg('Geolocation is not supported by your browser')
+            setIsFindingLocation(false)
         } else {
-            // status.textContent = 'Locating...'
             navigator.geolocation.getCurrentPosition(success, error)
         }
     }
@@ -35,6 +40,7 @@ const useTrackLocation = () => {
     return {
         coords,
         locationErrorMsg,
+        isFindingLocation,
         handleTrackLocation
     }
 }
