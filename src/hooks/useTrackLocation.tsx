@@ -1,4 +1,5 @@
 import { useState } from "react"
+
 import { Coordinates } from "../@types/foursquare"
 
 const useTrackLocation = () => {
