@@ -7,12 +7,33 @@ import Container from '../../components/Container'
 import { CoffeStorePage } from '../../pages/coffee-store/[id]'
 import * as S from './styles'
 import Button from '../../components/Button'
+import { useContext, useEffect, useState } from 'react'
+import { StoreContext } from '../../context/Store'
+import { isEmpty } from '../../helpers/isEmpty'
 
 const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
 
 
-const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
-    const { isFallback } = useRouter()
+const CoffeeStoreTemplate = (initialProps: CoffeStorePage) => {
+    const { isFallback, query } = useRouter()
+    const [coffeStore, setCoffeStore] = useState(initialProps.coffeeStore)
+
+    const { 
+        state: { coffeStores }, 
+        dispatch 
+    } = useContext(StoreContext)
+
+    const id = query.id as string
+
+    useEffect(() => {
+        if(isEmpty(initialProps.coffeeStore)) {
+            if (coffeStores.length > 0) {
+                const coffeStore = coffeStores.find(coffeStore => coffeStore.fsq_id === id)
+                
+                if (coffeStore) setCoffeStore(coffeStore)
+            }
+        }
+    }, [id])
     
     if (isFallback) {
         return <p>loading ...</p>
@@ -22,7 +43,7 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
         name,
         location,
         imgUrl
-    } = coffeeStore || {}
+    } = coffeStore || {}
 
     return (
         <S.Layout>
