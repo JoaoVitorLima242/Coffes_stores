@@ -1,14 +1,10 @@
 import { useState } from "react"
-
-type Coords = {
-    latitude: number
-    longitude: number
-}
+import { Coordinates } from "../@types/foursquare"
 
 const useTrackLocation = () => {
     const [locationErrorMsg, setLocationErrorMsg] = useState('')
     const [isFindingLocation, setIsFindingLocation] = useState(false)
-    const [coords, setCoords] = useState<Coords | null>(null)
+    const [coords, setCoords] = useState<Coordinates | null>(null)
 
     const success = (position: GeolocationPosition) => {
         const latitude = position.coords.latitude
