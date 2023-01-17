@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -14,14 +14,16 @@ import { HomePageProps } from '../../pages'
 import useTrackLocation from '../../hooks/useTrackLocation'
 // Services
 import { getCoffeeStores } from '../../services/places'
-import { Result } from '../../@types/foursquare'
-import Error from 'next/error'
+// Context
+import { StoreContext } from '../../context/Store'
+import { ACTION_TYPES } from '../../context/Store/types.d'
 
 const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
 
 const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
-    const [nearCoffeStores, setNearCoffeStores] = useState<Result[]>([])
     const [nearCoffeStoresError, setNearCoffeStoresError] = useState('')
+
+    const {state, dispatch} = useContext(StoreContext)
 
     const { 
         handleTrackLocation, 
@@ -36,7 +38,12 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                 try {
                     const fetchedCoffeStores = await getCoffeeStores(coords, 21)
                     
-                    setNearCoffeStores(fetchedCoffeStores)
+                    dispatch({
+                        type: ACTION_TYPES.SET_COFFE_STORES,
+                        payload: {
+                            coffeStores: fetchedCoffeStores
+                        }
+                    })
                 } catch(error) {
                     setNearCoffeStoresError('Error fetching coffee stores.')
                 }
@@ -44,7 +51,7 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
         }
         
         fetchCoffeStore()
-    }, [coords])
+    }, [coords, dispatch])
     
     const onBannerButtonClick = () => {
         handleTrackLocation()
@@ -72,11 +79,11 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                         alt='Banner image'
                     />
                 </S.ImageContainer>
-                    {nearCoffeStores.length > 0 && 
+                    {state.coffeStores.length > 0 && 
                         <S.SectionWrapper>
                             <S.SectionTitle>Stores near me</S.SectionTitle>
                             <S.CardLayout>
-                                {nearCoffeStores.map(({ fsq_id, name, imgUrl}) => (
+                                {state.coffeStores.map(({ fsq_id, name, imgUrl}) => (
                                     <Card 
                                         key={fsq_id}
                                         name={name}
