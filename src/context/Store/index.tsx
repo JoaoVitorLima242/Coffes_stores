@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useReducer } from "react";
-import { ACTION_TYPES, ReducerAction, ReducerState, StoreReducer, TStoreContext } from './types'
+import { ACTION_TYPES, ReducerAction, ReducerState, StoreReducer, TStoreContext } from './types.d'
 
 export const StoreContext = createContext({} as TStoreContext)
 
@@ -25,8 +25,8 @@ const storeReducer: StoreReducer = (state: ReducerState, action: ReducerAction) 
 const StoreProvider = ({ children }: PropsWithChildren) => {
     const initialState: ReducerState = {
         coords: {
-            latitude: -30.012105049907593,
-            longitude: -51.146366877470136 
+            latitude: 0,
+            longitude: 0 
         },
         coffeStores: []
     }

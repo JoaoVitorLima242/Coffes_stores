@@ -1,19 +1,27 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import { Coordinates } from "../@types/foursquare"
+import { StoreContext } from "../context/Store"
+import { ACTION_TYPES } from "../context/Store/types.d"
 
 const useTrackLocation = () => {
     const [locationErrorMsg, setLocationErrorMsg] = useState('')
     const [isFindingLocation, setIsFindingLocation] = useState(false)
-    const [coords, setCoords] = useState<Coordinates | null>(null)
+
+    const { state, dispatch } = useContext(StoreContext)
 
     const success = (position: GeolocationPosition) => {
         const latitude = position.coords.latitude
         const longitude = position.coords.longitude 
 
-        setCoords({
-            latitude,
-            longitude 
+        dispatch({
+            type: ACTION_TYPES.SET_COORDS,
+            payload: {
+                coords: {
+                    latitude,
+                    longitude
+                }
+            }
         })
         setLocationErrorMsg('')
         setIsFindingLocation(false)
@@ -35,7 +43,7 @@ const useTrackLocation = () => {
     }
 
     return {
-        coords,
+        coords: state.coords,
         locationErrorMsg,
         isFindingLocation,
         handleTrackLocation
