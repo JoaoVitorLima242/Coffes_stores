@@ -1,6 +1,5 @@
 import { useContext, useState } from "react"
 
-import { Coordinates } from "../@types/foursquare"
 import { StoreContext } from "../context/Store"
 import { ACTION_TYPES } from "../context/Store/types.d"
 
