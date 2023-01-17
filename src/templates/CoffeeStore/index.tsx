@@ -32,7 +32,7 @@ const CoffeeStoreTemplate = ({ coffeeStore }: CoffeStorePage) => {
             <Container>
                     <S.BackToHomeLink>
                         <Link href='/'>
-                            Back to Home
+                            ← Back to Home
                         </Link>
                     </S.BackToHomeLink>
                 <S.Wrapper>

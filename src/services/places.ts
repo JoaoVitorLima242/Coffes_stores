@@ -30,8 +30,6 @@ export const getCoffeeStores = async () => {
 
     const { results } = await api<FoursquareResponse>('https://api.foursquare.com/v3/places/search?query=Cafeteria&ll=-30.012105049907593%2C-51.146366877470136&limit=6', options)
 
-    console.log(photos)
-
     return results.map((result, index) => {
         return {
             ...result,
