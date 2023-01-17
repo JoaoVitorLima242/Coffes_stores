@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -11,12 +12,17 @@ import Card from '../../components/Card'
 import { HomePageProps } from '../../pages'
 // Custom Hooks
 import useTrackLocation from '../../hooks/useTrackLocation'
-import { useEffect } from 'react'
+// Services
 import { getCoffeeStores } from '../../services/places'
+import { Result } from '../../@types/foursquare'
+import Error from 'next/error'
 
 const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
 
 const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
+    const [nearCoffeStores, setNearCoffeStores] = useState<Result[]>([])
+    const [nearCoffeStoresError, setNearCoffeStoresError] = useState('')
+
     const { 
         handleTrackLocation, 
         coords, 
@@ -24,25 +30,25 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
         isFindingLocation 
     } = useTrackLocation()
 
-    const onBannerButtonClick = () => {
-        handleTrackLocation()
-    }
-
     useEffect(() => {
         const fetchCoffeStore = async () => {
             if (coords) {
                 try {
-                    const fetchedCoffeStores = await getCoffeeStores(coords, 20)
-
-                    console.log(fetchedCoffeStores)
-                } catch(err) {
-                    console.log(err)
+                    const fetchedCoffeStores = await getCoffeeStores(coords, 21)
+                    
+                    setNearCoffeStores(fetchedCoffeStores)
+                } catch(error) {
+                    setNearCoffeStoresError('Error fetching coffee stores.')
                 }
             }
         }
-
+        
         fetchCoffeStore()
     }, [coords])
+    
+    const onBannerButtonClick = () => {
+        handleTrackLocation()
+    }
 
     return (
         <Container>
@@ -57,6 +63,7 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                     buttonLoading={isFindingLocation}
                 />
                 {locationErrorMsg && <p>Something went wrong: {locationErrorMsg}</p>}
+                {nearCoffeStoresError && <p>Something went wrong: {nearCoffeStoresError}</p>}
                 <S.ImageContainer>
                     <Image 
                         src='/static/hero-image.png'
@@ -65,6 +72,21 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
                         alt='Banner image'
                     />
                 </S.ImageContainer>
+                    {nearCoffeStores.length > 0 && 
+                        <S.SectionWrapper>
+                            <S.SectionTitle>Stores near me</S.SectionTitle>
+                            <S.CardLayout>
+                                {nearCoffeStores.map(({ fsq_id, name, imgUrl}) => (
+                                    <Card 
+                                        key={fsq_id}
+                                        name={name}
+                                        imgUrl={imgUrl || coffeeStorePlaceholder}
+                                        href ={`/coffee-store/${fsq_id}`}
+                                    />
+                                ))}
+                            </S.CardLayout>
+                        </S.SectionWrapper>
+                    }
                     {coffeeStores.length > 0 && 
                         <S.SectionWrapper>
                             <S.SectionTitle>Toronto stores</S.SectionTitle>
