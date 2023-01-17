@@ -1,7 +1,7 @@
 namespace NodeJS {
     interface ProcessEnv {
-        FOURSQUARE_API_KEY: string;
-        UNSPLASH_API_KEY: string;
+        NEXT_PUBLIC_FOURSQUARE_API_KEY: string;
+        NEXT_PUBLIC_UNSPLASH_API_KEY: string;
     }
   }
   

@@ -3,8 +3,8 @@ import { createApi } from 'unsplash-js';
 import { FoursquareResponse } from "../@types/foursquare"
 import { api } from "./api"
 
-const AUTHORIZATION_KEY = process.env.FOURSQUARE_API_KEY
-const UNSPLASH_KEY = process.env.UNSPLASH_API_KEY
+const AUTHORIZATION_KEY = process.env.NEXT_PUBLIC_FOURSQUARE_API_KEY
+const UNSPLASH_KEY = process.env.NEXT_PUBLIC_UNSPLASH_API_KEY
 
 
 const unsplash = createApi({
@@ -12,7 +12,13 @@ const unsplash = createApi({
 });
 
 
-export const getCoffeeStores = async () => {
+export const getCoffeeStores = async (
+    coords = {
+        latitude: -30.012105049907593,
+        longitude: -51.146366877470136
+    },
+    limit = 6
+) => {
     const photos = await unsplash.search.getPhotos({
         query: "coffee shop",
         perPage: 30,
@@ -28,7 +34,7 @@ export const getCoffeeStores = async () => {
         }
     })
 
-    const { results } = await api<FoursquareResponse>('https://api.foursquare.com/v3/places/search?query=Cafeteria&ll=-30.012105049907593%2C-51.146366877470136&limit=6', options)
+    const { results } = await api<FoursquareResponse>(`https://api.foursquare.com/v3/places/search?query=Cafeteria&ll=${coords.latitude},${coords.longitude}&limit=${limit}`, options)
 
     return results.map((result, index) => {
         return {
