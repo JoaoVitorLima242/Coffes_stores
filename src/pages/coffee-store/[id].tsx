@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     return {
         props: {
-            coffeeStore
+            coffeeStore: coffeeStore || {}
         }
     }
 }
