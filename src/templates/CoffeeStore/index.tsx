@@ -1,14 +1,19 @@
+import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import Container from '../../components/Container'
+// Types
 import { CoffeStorePage } from '../../pages/coffee-store/[id]'
-import * as S from './styles'
-import Button from '../../components/Button'
-import { useContext, useEffect, useState } from 'react'
+// Context
 import { StoreContext } from '../../context/Store'
+// Styles
+import * as S from './styles'
+// Components
+import Container from '../../components/Container'
+import Button from '../../components/Button'
+// Helpers
 import { isEmpty } from '../../helpers/isEmpty'
 
 const coffeeStorePlaceholder = 'https://images.unsplash.com/photo-1498804103079-a6351b050096?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2468&q=80'
