@@ -24,7 +24,7 @@ const CoffeeStoreTemplate = (initialProps: CoffeStorePage) => {
     const [coffeStore, setCoffeStore] = useState(initialProps.coffeeStore)
 
     const { 
-        state: { coffeStores }, 
+        state: { coffeeStores }, 
         dispatch 
     } = useContext(StoreContext)
 
@@ -32,8 +32,8 @@ const CoffeeStoreTemplate = (initialProps: CoffeStorePage) => {
 
     useEffect(() => {
         if(isEmpty(initialProps.coffeeStore)) {
-            if (coffeStores.length > 0) {
-                const coffeStore = coffeStores.find(coffeStore => coffeStore.fsq_id === id)
+            if (coffeeStores.length > 0) {
+                const coffeStore = coffeeStores.find(coffeStore => coffeStore.fsq_id === id)
                 
                 if (coffeStore) setCoffeStore(coffeStore)
             }

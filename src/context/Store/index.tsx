@@ -14,7 +14,7 @@ const storeReducer: StoreReducer = (state: ReducerState, action: ReducerAction) 
         case ACTION_TYPES.SET_COFFE_STORES: {
             return {
                 ...state,
-                coffeStores: action.payload.coffeStores
+                coffeeStores: action.payload.coffeeStores
             }
         }
         default:
@@ -28,7 +28,7 @@ const StoreProvider = ({ children }: PropsWithChildren) => {
             latitude: 0,
             longitude: 0 
         },
-        coffeStores: []
+        coffeeStores: []
     }
 
     const [state, dispatch] = useReducer(storeReducer, initialState)

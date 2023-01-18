@@ -17,7 +17,7 @@ export type ReducerAction = {
 
 export type ReducerState = {
     coords: Coordinates
-    coffeStores: Result[]
+    coffeeStores: Result[]
 }
 
 export type StoreReducer = (state: ReducerState, action: ReducerAction) => ReducerState
