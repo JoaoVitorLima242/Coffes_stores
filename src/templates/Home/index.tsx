@@ -36,12 +36,13 @@ const HomeTemplate = ({ coffeeStores }: HomePageProps) => {
         const fetchCoffeStore = async () => {
             if (coords) {
                 try {
-                    const fetchedCoffeStores = await getCoffeeStores(coords, 21)
+                    const fetchedCoffeStores = await fetch(`/api/getCoffeeStoresByLocation?latitude=${coords.latitude}&longitude=${coords.longitude}&limit=21`)
                     
+                    const coffeeStores = await fetchedCoffeStores.json()
                     dispatch({
                         type: ACTION_TYPES.SET_COFFE_STORES,
                         payload: {
-                            coffeStores: fetchedCoffeStores
+                            coffeeStores
                         }
                     })
                 } catch(error) {
