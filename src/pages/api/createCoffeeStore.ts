@@ -1,13 +1,10 @@
-import Airtable from 'airtable'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { table } from '../../services/airtable'
 
-const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY
-const AIRTABLE_BASE_KEY = process.env.AIRTABLE_BASE_KEY
 
-Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: AIRTABLE_API_KEY
-})
+const createCoffeeStore = (req: NextApiRequest, res: NextApiResponse) => {
 
-const base = Airtable.base(AIRTABLE_BASE_KEY)
+    res.status(200).json({message: 'teste'})
+}
 
-const table = base('coffe-stores')
+export default createCoffeeStore
